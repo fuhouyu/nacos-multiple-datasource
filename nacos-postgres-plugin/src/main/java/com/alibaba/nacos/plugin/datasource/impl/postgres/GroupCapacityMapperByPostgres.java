@@ -1,7 +1,7 @@
 package com.alibaba.nacos.plugin.datasource.impl.postgres;
 
 import com.alibaba.nacos.common.utils.CollectionUtils;
-import com.alibaba.nacos.plugin.datasource.impl.postgres.constant.PostgresqlConstant;
+import com.alibaba.nacos.plugin.datasource.impl.postgres.constant.PostgresConstant;
 import com.alibaba.nacos.plugin.datasource.mapper.GroupCapacityMapper;
 import com.alibaba.nacos.plugin.datasource.model.MapperContext;
 import com.alibaba.nacos.plugin.datasource.model.MapperResult;
@@ -12,7 +12,7 @@ import com.alibaba.nacos.plugin.datasource.model.MapperResult;
 public class GroupCapacityMapperByPostgres extends AbstractMapperByPostgres implements GroupCapacityMapper {
     @Override
     public String getDataSource() {
-        return PostgresqlConstant.POSTGRESQL;
+        return PostgresConstant.POSTGRES;
     }
 
     @Override

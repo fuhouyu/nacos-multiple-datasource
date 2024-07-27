@@ -7,11 +7,11 @@ package com.alibaba.nacos.plugin.datasource.impl.postgres.constant;
  *
  * @author fuhouyu
  */
-public class PostgresqlConstant {
+public class PostgresConstant {
 
-    public static final String POSTGRESQL = "postgresql";
+    public static final String POSTGRES = "postgres";
 
-    private PostgresqlConstant() {
+    private PostgresConstant() {
 
     }
 

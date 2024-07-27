@@ -1,7 +1,7 @@
 package com.alibaba.nacos.plugin.datasource.impl.postgres;
 
 import com.alibaba.nacos.common.utils.CollectionUtils;
-import com.alibaba.nacos.plugin.datasource.impl.postgres.constant.PostgresqlConstant;
+import com.alibaba.nacos.plugin.datasource.impl.postgres.constant.PostgresConstant;
 import com.alibaba.nacos.plugin.datasource.mapper.AbstractMapper;
 import com.alibaba.nacos.plugin.datasource.mapper.ConfigInfoAggrMapper;
 import com.alibaba.nacos.plugin.datasource.model.MapperContext;
@@ -17,7 +17,7 @@ public class ConfigInfoAggrMapperByPostgres extends AbstractMapper implements Co
 
     @Override
     public String getDataSource() {
-        return PostgresqlConstant.POSTGRESQL;
+        return PostgresConstant.POSTGRES;
     }
 
     @Override

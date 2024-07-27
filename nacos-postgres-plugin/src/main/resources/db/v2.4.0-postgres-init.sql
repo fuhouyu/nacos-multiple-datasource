@@ -431,7 +431,7 @@ DROP TABLE IF EXISTS "public"."users";
 CREATE TABLE "public"."users" (
   "username" varchar(50) COLLATE "pg_catalog"."default" NOT NULL DEFAULT NULL::character varying,
   "password" varchar(500) COLLATE "pg_catalog"."default" NOT NULL DEFAULT NULL::character varying,
-  "enabled" int2 NOT NULL
+  "enabled" boolean NOT NULL
 )
 ;
 COMMENT ON COLUMN "public"."users"."username" IS 'username';
@@ -442,7 +442,8 @@ COMMENT ON COLUMN "public"."users"."enabled" IS 'enabled';
 -- Records of users
 -- ----------------------------
 BEGIN;
-INSERT INTO "public"."users" ("username", "password", "enabled") VALUES ('nacos', '$2a$10$EuWPZHzz32dJN7jexM34MOeYirDdFAZm2kuWj7VEOJhhZkDrxfvUu', 1);
+INSERT INTO "public"."users" ("username", "password", "enabled")
+VALUES ('nacos', '$2a$10$EuWPZHzz32dJN7jexM34MOeYirDdFAZm2kuWj7VEOJhhZkDrxfvUu', true);
 COMMIT;
 
 -- ----------------------------

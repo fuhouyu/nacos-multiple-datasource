@@ -1,7 +1,7 @@
 package com.alibaba.nacos.plugin.datasource.impl.postgres;
 
 import com.alibaba.nacos.common.utils.StringUtils;
-import com.alibaba.nacos.plugin.datasource.impl.postgres.constant.PostgresqlConstant;
+import com.alibaba.nacos.plugin.datasource.impl.postgres.constant.PostgresConstant;
 import com.alibaba.nacos.plugin.datasource.mapper.ConfigTagsRelationMapper;
 import com.alibaba.nacos.plugin.datasource.model.MapperContext;
 import com.alibaba.nacos.plugin.datasource.model.MapperResult;
@@ -17,7 +17,7 @@ public class ConfigTagsRelationMapperByPostgres extends AbstractMapperByPostgres
 
     @Override
     public String getDataSource() {
-        return PostgresqlConstant.POSTGRESQL;
+        return PostgresConstant.POSTGRES;
     }
 
 
