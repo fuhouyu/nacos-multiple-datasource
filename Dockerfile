@@ -4,7 +4,7 @@ ARG DATASOURCE_PLUGIN
 ADD . .
 # 执行maven打包
 RUN --mount=type=cache,target=~/.m2/repository \
-#    mvn clean install  -Dmaven.test.skip=true -Dmaven.source.skip=true \
+    mvn clean install  -Dmaven.test.skip=true -Dmaven.source.skip=true \
     mv ./${DATASOURCE_PLUGIN}/target/${DATASOURCE_PLUGIN}*.jar /home/nacos/plugins/${DATASOURCE_PLUGIN}.jar
 
 FROM alpine:latest
