@@ -10,7 +10,6 @@ import com.alibaba.nacos.plugin.datasource.model.MapperResult;
 import java.util.List;
 
 /**
- *
  * @author fuhouyu
  */
 public class ConfigInfoAggrMapperByPostgres extends AbstractMapper implements ConfigInfoAggrMapper {
