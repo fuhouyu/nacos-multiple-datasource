@@ -23,11 +23,11 @@ public class ConfigTagsRelationMapperByPostgres extends AbstractMapperByPostgres
 
     @Override
     public MapperResult findConfigInfo4PageFetchRows(MapperContext context) {
-         String tenant = (String)context.getWhereParameter("tenantId");
-        String dataId = (String)context.getWhereParameter("dataId");
-        String group = (String)context.getWhereParameter("groupId");
-        String appName = (String)context.getWhereParameter("app_name");
-        String content = (String)context.getWhereParameter("content");
+        String tenant = (String) context.getWhereParameter("tenantId");
+        String dataId = (String) context.getWhereParameter("dataId");
+        String group = (String) context.getWhereParameter("groupId");
+        String appName = (String) context.getWhereParameter("app_name");
+        String content = (String) context.getWhereParameter("content");
         String[] tagArr = (String[]) context.getWhereParameter("tagARR");
         List<Object> paramList = new ArrayList<>();
         StringBuilder where = new StringBuilder(" WHERE ");
@@ -55,7 +55,7 @@ public class ConfigTagsRelationMapperByPostgres extends AbstractMapperByPostgres
 
         where.append(" AND b.tag_name IN (");
 
-        for(int i = 0; i < tagArr.length; ++i) {
+        for (int i = 0; i < tagArr.length; ++i) {
             if (i != 0) {
                 where.append(", ");
             }
@@ -70,12 +70,12 @@ public class ConfigTagsRelationMapperByPostgres extends AbstractMapperByPostgres
 
     @Override
     public MapperResult findConfigInfoLike4PageFetchRows(MapperContext context) {
-        String tenant = (String)context.getWhereParameter("tenantId");
-        String dataId = (String)context.getWhereParameter("dataId");
-        String group = (String)context.getWhereParameter("groupId");
-        String appName = (String)context.getWhereParameter("app_name");
-        String content = (String)context.getWhereParameter("content");
-        String[] tagArr = (String[])((String[])context.getWhereParameter("tagARR"));
+        String tenant = (String) context.getWhereParameter("tenantId");
+        String dataId = (String) context.getWhereParameter("dataId");
+        String group = (String) context.getWhereParameter("groupId");
+        String appName = (String) context.getWhereParameter("app_name");
+        String content = (String) context.getWhereParameter("content");
+        String[] tagArr = (String[]) ((String[]) context.getWhereParameter("tagARR"));
         List<Object> paramList = new ArrayList();
         StringBuilder where = new StringBuilder(" WHERE ");
         where.append(" a.tenant_id LIKE ? ");
@@ -102,7 +102,7 @@ public class ConfigTagsRelationMapperByPostgres extends AbstractMapperByPostgres
 
         where.append(" AND b.tag_name IN (");
 
-        for(int i = 0; i < tagArr.length; ++i) {
+        for (int i = 0; i < tagArr.length; ++i) {
             if (i != 0) {
                 where.append(", ");
             }

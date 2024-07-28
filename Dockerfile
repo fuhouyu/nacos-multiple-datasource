@@ -1,14 +1,17 @@
+# build plugin jar
 FROM maven:3.8.6-openjdk-8 as postgresPlugin
 WORKDIR  /home/nacos/plugins
 ARG DATASOURCE_PLUGIN
 ADD . .
-# 执行maven打包
 RUN --mount=type=cache,target=~/.m2/repository \
     mvn clean install -Dmaven.test.skip=true -Dmaven.source.skip=true;\
     mv ./${DATASOURCE_PLUGIN}/target/${DATASOURCE_PLUGIN}*.jar /home/nacos/plugins/${DATASOURCE_PLUGIN}.jar
 
+# build Nacos
 FROM alpine:latest
-# 安装依赖
+LABEL maintainer="fuhouyu <fuhouyu@live.cn>"
+LABEL version="$NACOS_VERSION"
+LABEL description="Nacos Multiple Datasource"
 RUN apk add --no-cache openjdk8-jre-base curl iputils ncurses vim libcurl
 ARG NACOS_VERSION
 ARG DATASOURCE_PLUGIN
@@ -37,9 +40,7 @@ RUN \
     # 软件源配置
     sed -i 's#dl-cdn.alpinelinux.org#mirrors.aliyun.com#g' /etc/apk/repositories; \
     apt update -y && apt install -y wget;\
-    ln -snf /usr/share/zoneinfo/$TIME_ZONE /etc/localtime && echo $TIME_ZONE > /etc/timezone; \
-    # 设置ll
-    echo "alias ll='ls $LS_OPTIONS -l'" >> /root/.bashrc &&  . /root/.bashrc;
+    ln -snf /usr/share/zoneinfo/$TIME_ZONE /etc/localtime && echo $TIME_ZONE > /etc/timezone;
 RUN wget "$DOWNLOAD_URL" -O nacos-server.tar.gz && tar -xvf nacos-server.tar.gz --strip-components=1 -C ./ && rm -rf *.gz;
 RUN mkdir -p logs 	&& touch logs/start.out 	&& ln -sf /dev/stdout start.out 	&& ln -sf /dev/stderr start.out
 
