@@ -148,7 +148,8 @@ metadata:
   namespace: common-component
 spec:
   serviceName: nacos-headless
-  replicas: 1
+  # Nacos 集群，默认3节点
+  replicas: 3
   template:
     metadata:
       labels:
@@ -157,7 +158,7 @@ spec:
         pod.alpha.kubernetes.io/initialized: "true"
     spec:
       containers:
-        - name: k8snacos
+        - name: nacos
           imagePullPolicy: Always
           image: fuhouyu/nacos-server-multiple-datasource:2.4.0.1-postgresql
           # 根据需要修改
@@ -168,7 +169,6 @@ spec:
             limits:
               memory: "2048Mi"
               cpu: "1024m"
-          # Nacos 集群，默认3节点
           env:
             - name: NACOS_REPLICAS
               value: "3"
