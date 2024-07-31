@@ -5,7 +5,7 @@ ARG DATASOURCE_PLUGIN
 ADD . .
 RUN --mount=type=cache,target=~/.m2/repository \
     mvn clean install -Dmaven.test.skip=true -Dmaven.source.skip=true;\
-    mv ./${DATASOURCE_PLUGIN}/target/${DATASOURCE_PLUGIN}*.jar /home/nacos/plugins/${DATASOURCE_PLUGIN}.jar
+    cp ./${DATASOURCE_PLUGIN}/target/${DATASOURCE_PLUGIN}*.jar /home/nacos/plugins/${DATASOURCE_PLUGIN}.jar
 
 # build Nacos
 FROM alpine:latest
@@ -13,7 +13,7 @@ LABEL maintainer="fuhouyu <fuhouyu@live.cn>"
 LABEL version="$NACOS_VERSION"
 LABEL description="Nacos Multiple Datasource"
 RUN apk add --no-cache openjdk8-jre-base curl iputils ncurses vim libcurl
-ARG NACOS_VERSION
+ARG NACOS_VERSION=2.4.0.1
 ARG DATASOURCE_PLUGIN
 COPY --from=postgresPlugin /home/nacos/plugins/${DATASOURCE_PLUGIN}.jar /home/nacos/plugins/${DATASOURCE_PLUGIN}.jar
 ENV DOWNLOAD_URL="https://github.com/alibaba/nacos/releases/download/${NACOS_VERSION}/nacos-server-${NACOS_VERSION}.tar.gz"

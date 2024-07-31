@@ -23,7 +23,7 @@ function print_servers() {
       echo "$server" >>"$CLUSTER_CONF"
     done
   else
-    bash $PLUGINS_DIR/plugin.sh
+    sh $PLUGINS_DIR/plugin.sh
     sleep 30
   fi
 }
